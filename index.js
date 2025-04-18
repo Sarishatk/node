@@ -7,8 +7,6 @@ const router = require('./Route/router')
 const pfsever = express()
 
 
-
-
 pfsever.use(cors())
 pfsever.use(express.json())
 pfsever.use(router)
