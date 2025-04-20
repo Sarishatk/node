@@ -5,7 +5,7 @@ const cors = require('cors')
 const router = require('./Route/router')
 // create an express application
 const pfsever = express()
-
+require('./DB/connection')
 
 pfsever.use(cors())
 pfsever.use(express.json())
