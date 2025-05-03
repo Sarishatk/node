@@ -6,10 +6,16 @@ const jwtmiddleware =(req,res,next)=>{
     const token = req.headers['authorization'].split(" ")[1]
     // console.log(token);
     // token ne verify cheyyan oru predefined method und athu oru variable lek edth vekkanm
-    const jwtResponse = jwt.verify(token,"supercreatekey1234")
+  try { const jwtResponse = jwt.verify(token,"supercreatekey1234")
     console.log(jwtResponse);
-   req.payload = jwtResponse.userId 
-} 
+   req.payload = jwtResponse.userId
+   next()
+}catch(err){
+    req.status(401).json('autherization failed!!! please Login')
+}
+
+
+}
 module.exports = jwtmiddleware
 
 
