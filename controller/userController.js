@@ -1,5 +1,5 @@
 const users = require('../models/userSchema')
-const project = require('../models/projectSchema')
+
 const jwt = require('jsonwebtoken')
 
 // logic to resliove register
