@@ -50,4 +50,13 @@ const alluserProject = async(req,res)=>{
 
 // get all projects
 
-const getAllProjects = async (req,res)
+const getAllProjects = async (req,res)=>{
+    try{
+
+  const allProjects = await projects.findOne()
+  res.status(200).json(allProjects)
+
+    }catch(err){
+        res.status(401).json(err)
+    }
+}
