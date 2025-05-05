@@ -37,7 +37,17 @@ exports.addProject =async (req,res)=>{
 
 // get user project
 
-const userProject = async(req,res)=>{
+const alluserProject = async(req,res)=>{
     const userId = req.payload
-    
+   try{
+    const userProjects = await projects.findOne({userId})
+    res.status(200).json(userProjects)
+   }catch(err){
+    res.status(401).json(err)
+   } 
 }
+
+
+// get all projects
+
+const getAllProjects = async (req,res)
