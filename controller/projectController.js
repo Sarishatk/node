@@ -34,3 +34,10 @@ exports.addProject =async (req,res)=>{
     }
     
 }
+
+// get user project
+
+const userProject = async(req,res)=>{
+    const userId = req.payload
+    
+}
