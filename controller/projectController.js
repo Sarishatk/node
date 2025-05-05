@@ -37,7 +37,7 @@ exports.addProject =async (req,res)=>{
 
 // get user project
 
-const alluserProject = async(req,res)=>{
+exports.alluserProject = async(req,res)=>{
     const userId = req.payload
    try{
     const userProjects = await projects.findOne({userId})
@@ -50,11 +50,21 @@ const alluserProject = async(req,res)=>{
 
 // get all projects
 
-const getAllProjects = async (req,res)=>{
+exports.getAllProjects = async (req,res)=>{
     try{
 
   const allProjects = await projects.findOne()
   res.status(200).json(allProjects)
+
+    }catch(err){
+        res.status(401).json(err)
+    }
+}
+
+// home project
+exports.HomeProject = async (req,res)=>{
+    try{
+        const aLLhomeproject = await projects.findOne().limit(3)
 
     }catch(err){
         res.status(401).json(err)
