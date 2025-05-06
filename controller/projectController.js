@@ -53,7 +53,7 @@ exports.alluserProject = async(req,res)=>{
 exports.getAllProjects = async (req,res)=>{
     try{
 
-  const allProjects = await projects.findOne()
+  const allProjects = await projects.find()
   res.status(200).json(allProjects)
 
     }catch(err){
@@ -65,7 +65,7 @@ exports.getAllProjects = async (req,res)=>{
 exports.HomeProject = async (req,res)=>{
     try{
         const aLLhomeproject = await projects.findOne().limit(3)
-
+res.status(200).json(aLLhomeproject)
     }catch(err){
         res.status(401).json(err)
     }
