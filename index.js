@@ -11,6 +11,7 @@ pfsever.use(cors())
 pfsever.use(express.json())
 
 pfsever.use(router)
+pfserver.use('/uploads',express.static('./uploads'))
  const PORT = 4000 || process.env.PORT
 
  pfsever.listen(PORT,()=>{
