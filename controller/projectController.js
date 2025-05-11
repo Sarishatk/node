@@ -51,6 +51,7 @@ exports.alluserProject = async(req,res)=>{
 // get all projects
 
 exports.getAllProjects = async (req,res)=>{
+    const searchkey = req.query.serach
     try{
 
   const allProjects = await projects.find()
