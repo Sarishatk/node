@@ -52,7 +52,11 @@ exports.alluserProject = async(req,res)=>{
 
 exports.getAllProjects = async (req,res)=>{
     const searchkey = req.query.serach
-    
+    const query ={
+        language:{$regex:searchkey 
+
+        }
+    }
     try{
 
   const allProjects = await projects.find()
