@@ -53,13 +53,13 @@ exports.alluserProject = async(req,res)=>{
 exports.getAllProjects = async (req,res)=>{
     const searchkey = req.query.serach
     const query ={
-        language:{$regex:searchkey 
-
+        language:{$regex:searchkey ,$options:"i"
+// case sensitive aavnd irikkaaan
         }
     }
     try{
 
-  const allProjects = await projects.find()
+  const allProjects = await projects.find(query)
   res.status(200).json(allProjects)
 
     }catch(err){
