@@ -39,8 +39,9 @@ exports.addProject = async (req, res) => {
 
 exports.alluserProject = async (req, res) => {
     const userId = req.payload
+    console.log(userId)
     try {
-        const userProjects = await projects.findOne({ userId })
+        const userProjects = await projects.find({ userId })
         res.status(200).json(userProjects)
     } catch (err) {
         res.status(401).json(err)
