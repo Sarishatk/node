@@ -57,6 +57,12 @@ exports.getAllProjects = async (req, res) => {
         language: { $regex: searchkey, $options: "i" } // properly closed
     };
 
+    try {
+        const allProjects = await projects.find(query);
+        res.status(200).json(allProjects);
+    } catch (err) {
+        res.status(500).json({ error: err.message }); // 401 is for unauthorized, not server errors
+    }
 };
 
 
