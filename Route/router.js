@@ -23,8 +23,8 @@ router.get('/project/all',jwtmiddleware,projectController.getAllProjects)
 router.get('/projects/Home-projects',projectController.HomeProject)
 
 
-
-
+// edit projects
+router.put('/projects/Home-projects')
 // export router
 module.exports = router 
 

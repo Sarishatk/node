@@ -75,3 +75,16 @@ exports.HomeProject = async (req, res) => {
         res.status(401).json(err)
     }
 }
+
+// edit project
+exports.editproject = async (req,res) =>{
+const {id} = req.params
+const {title,language,overview,github,website} = req.body
+
+
+
+
+
+
+
+}
