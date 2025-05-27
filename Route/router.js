@@ -24,7 +24,7 @@ router.get('/projects/Home-projects',projectController.HomeProject)
 
 
 // edit projects
-router.put('/projects/Home-projects')
+router.put('/projects/edit')
 // export router
 module.exports = router 
 
