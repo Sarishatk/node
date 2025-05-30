@@ -4,7 +4,6 @@ const userController = require('../controller/userController')
 const projectController = require('../controller/projectController')
 const jwtmiddleware = require('../MiddleWares/jwtMiddleware')
 const multerConfig = require('../MiddleWares/multerMiddleWre')
-const { editproject } = require('../controller/projectController')
 
 // register
 router.post('/user/register',userController.register)
@@ -25,7 +24,7 @@ router.get('/projects/Home-projects',projectController.HomeProject)
 
 
 // edit projects
-router.put('/projects/edit/:id', editproject)
+router.put('/projects/edit/:id',jwtmiddleware,multerConfig.single("projectImage"),projectController.editproject)
 // export router
 module.exports = router 
 

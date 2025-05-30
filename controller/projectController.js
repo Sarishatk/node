@@ -81,22 +81,36 @@ exports.editproject = async (req, res) => {
     const { id } = req.params;
     const userId = req.payload;
     const { title, language, overview, github, website, projectImage } = req.body;
-    const uploadedImage = req.file ? req.file.filename : null;
+    const uploadedImage = req.file ? req.file.filename : projectImage;
+
+
 
     try {
-        const UpdateProject = await projects.findByIdAndUpdate({_id: id},{
-            title,
-            language,
-            overview,
-            github,
-            website,
-            projectImage:uploadedImage,
-            userId
-        },{new: true})
-  await  UpdateProject.save()
-  res.status(200).json( UpdateProject)
+
+        const UpdateProject = await projects.findByIdAndUpdate(
+            { _id: id },
+            {
+                title,
+                language,
+                overview,
+                github,
+                website,
+                projectImage: uploadedImage,
+                userId
+            },
+            { new: true }
+        );
+
+     
+            return res.status(200).json(UpdateProject );
+        
+
+        // Removed: await UpdateProject.save();
+
+        res.status(200).json(UpdateProject);
     } catch (err) {
-        res.status(401).json(err);
+        console.error("Error in editproject:", err);
+        res.status(500).json({ success: false, message: err.message });
     }
-}
+};
 
