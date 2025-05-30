@@ -77,14 +77,26 @@ exports.HomeProject = async (req, res) => {
 }
 
 // edit project
-exports.editproject = async (req,res) =>{
-const {id} = req.params
-const {title,language,overview,github,website} = req.body
+exports.editproject = async (req, res) => {
+    const { id } = req.params;
+    const userId = req.payload;
+    const { title, language, overview, github, website, projectImage } = req.body;
+    const uploadedImage = req.file ? req.file.filename : null;
 
-
-
-
-
-
-
+    try {
+        const UpdateProject = await projects.findByIdAndUpdate({_id: id},{
+            title,
+            language,
+            overview,
+            github,
+            website,
+            projectImage:uploadedImage,
+            userId
+        },{new: true})
+  await  UpdateProject.save()
+  res.status(200).json( UpdateProject)
+    } catch (err) {
+        res.status(401).json(err);
+    }
 }
+
