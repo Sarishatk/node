@@ -28,3 +28,5 @@ router.put('/projects/edit/:id',jwtmiddleware,multerConfig.single("projectImage"
 // export router
 module.exports = router 
 
+// delete project route set
+router.delete('/projects/remove/:id', jwtmiddleware, projectController.deleteProjectController)
