@@ -125,3 +125,38 @@ res.status(200).json(removeProject)
     }
 
 }
+
+exports.editUser = async (req, res) => {
+    try {
+        const userId = req.params.userId;
+        const updates = req.body;
+        
+        // If a file was uploaded, add the path to updates
+        if (req.file) {
+            updates.profileImage = req.file.filename;
+        }
+
+        const updatedUser = await User.findByIdAndUpdate(
+            userId,
+            updates,
+            { new: true, runValidators: true }
+        );
+
+        if (!updatedUser) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        res.status(200).json({
+            status: true,
+            message: "User updated successfully",
+            user: updatedUser
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            status: false,
+            message: "Error updating user",
+            error: error.message
+        });
+    }
+}
