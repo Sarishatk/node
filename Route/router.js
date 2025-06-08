@@ -24,7 +24,6 @@ router.get('/projects/Home-projects',projectController.HomeProject)
 
 
 // edit projects
-router.put('/projects/edit/:id',jwtmiddleware,multerConfig.single("projectImage"),projectController.editproject)
 // export router
 
 
